@@ -19,6 +19,8 @@ public class EnemyMoveScript : MonoBehaviour
     bool movingTo = true;
     bool isAttacking = false;
 
+    private float _directionY;
+
     private void Awake()
     {
         //Assign waypoint variable
@@ -37,12 +39,22 @@ public class EnemyMoveScript : MonoBehaviour
         if (movingTo)
         {
             transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, step);
+            FaceMovementDirection(); // Make the enemy face the movement direction
         }
         //Check if target is reached (only works for waypoints)
         CheckIfTargetIsReached();
         CheckDistanceToPlayer();
     }
+    void FaceMovementDirection()
+    {
+        Vector3 direction = (currentTarget.position - transform.position).normalized;
 
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+        }
+    }
     void CheckIfTargetIsReached()
     {
         if (transform.position == currentTarget.position)
@@ -57,6 +69,7 @@ public class EnemyMoveScript : MonoBehaviour
 
         if (distance <= alertRange && !followingPlayer)
         {
+            Debug.Log("target player");
             followingPlayer = true;
             currentTarget = player.transform;
         }
