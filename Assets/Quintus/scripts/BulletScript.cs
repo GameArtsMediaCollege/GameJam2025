@@ -16,7 +16,8 @@ public class BulletScript : MonoBehaviour
 
     private void Update()
     {
-        this.transform.Translate(Vector3.forward * Time.deltaTime * -movSpeed);
+        //this.transform.Translate(Vector3.forward * Time.deltaTime * -movSpeed);
+        transform.position += transform.forward * Time.deltaTime * movSpeed;
     }
 
 
