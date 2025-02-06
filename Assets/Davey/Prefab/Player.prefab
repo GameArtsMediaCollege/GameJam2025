@@ -48,10 +48,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6652725513331149018, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7aa0fc88214fe9349bdb6006764f5a0e, type: 2}
+    - target: {fileID: -5912990567905403015, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e60ccc8d65375a842b73f5e04669f1d1, type: 2}
+    - target: {fileID: 557490990538768343, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 619e30ea9da4a07438afad0ed5ab6e7d, type: 2}
     - target: {fileID: 919132149155446097, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
       propertyPath: m_Name
       value: Gerrit_04
       objectReference: {fileID: 0}
+    - target: {fileID: 1413553610152399031, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e60ccc8d65375a842b73f5e04669f1d1, type: 2}
+    - target: {fileID: 2505964656557591486, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 86da865d8cf5ebb4188e4fac7854d124, type: 2}
+    - target: {fileID: 2525957384400585608, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e60ccc8d65375a842b73f5e04669f1d1, type: 2}
+    - target: {fileID: 2803436535603912181, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fe27224fc4ff7a84f9619f1fba14127c, type: 2}
+    - target: {fileID: 5232627393660835655, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c0378be216a2c3141a531bbaed301943, type: 2}
+    - target: {fileID: 8513722315087895547, guid: 507fd338b4ea67741bbac1cf89bafc03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e60ccc8d65375a842b73f5e04669f1d1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -72,7 +108,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 06020121b542ac14b8dd57c2fd7404c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.62
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 06020121b542ac14b8dd57c2fd7404c4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -239,6 +275,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 777c46aa-be57-47c0-8cc1-4686cb77adaf
     m_ActionName: 'Controls/Aim[/Mouse/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e0470e6-0669-4207-88d9-a93e331f4a85
+    m_ActionName: 'Controls/shoot[/XInputControllerWindows/rightTrigger]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controls
