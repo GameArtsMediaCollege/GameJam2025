@@ -18,6 +18,7 @@ public class EnemyMoveScript : MonoBehaviour
     bool followingPlayer = false;
     bool movingTo = true;
     bool isAttacking = false;
+    [SerializeField] Animator animator;
 
     private float _directionY;
 
@@ -92,6 +93,7 @@ public class EnemyMoveScript : MonoBehaviour
     void Attack()
     {
         StartCoroutine(WaitBeforeMoving());
+        //animator.SetBool("isAttacking", true);
     }
 
 
