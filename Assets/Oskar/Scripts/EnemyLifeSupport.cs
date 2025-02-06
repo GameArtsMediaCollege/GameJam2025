@@ -23,7 +23,6 @@ public class EnemyLifeSupport : MonoBehaviour
         {
             Debug.Log("damage taken");
             animator.SetBool("EnemyHit", true);
-
             CheckLife();
         }
     }
