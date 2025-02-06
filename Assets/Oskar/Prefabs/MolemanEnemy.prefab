@@ -117,7 +117,11 @@ MonoBehaviour:
   alertRange: 10
   attackInterval: 1
   attackRange: 1.5
+<<<<<<< Updated upstream
   animator: {fileID: 0}
+=======
+  animator: {fileID: 8934429997693438530}
+>>>>>>> Stashed changes
 --- !u!65 &-4795263506324105965
 BoxCollider:
   m_ObjectHideFlags: 0

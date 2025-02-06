@@ -28,6 +28,8 @@ public class EnemyMoveScript : MonoBehaviour
         waypointObj = GameObject.Find("Waypoints");
         player = GameObject.Find("Player");
 
+        //player = GameObject.FindGameObjectWithTag("Player");
+
         SetWaypoint();
     }
 
@@ -70,13 +72,13 @@ public class EnemyMoveScript : MonoBehaviour
 
         if (distance <= alertRange && !followingPlayer)
         {
-            Debug.Log("target player");
+            //Debug.Log("target player");
             followingPlayer = true;
             currentTarget = player.transform;
         }
         if (distance <= attackRange && !isAttacking)
         {
-            Debug.Log("in attack range");
+            //Debug.Log("in attack range");
             Attack();
         }
     }
@@ -86,14 +88,15 @@ public class EnemyMoveScript : MonoBehaviour
         //Pick random waypoint
         List<Transform> targets = waypointObj.GetComponent<WaypointScript>().waypoints;
         int listPos = Random.Range(0, targets.Count);
-        Debug.Log(listPos);
+        //Debug.Log(listPos);
 
         currentTarget = targets[listPos];
     }
     void Attack()
     {
+        animator.SetBool("isAttacking", true);
         StartCoroutine(WaitBeforeMoving());
-        //animator.SetBool("isAttacking", true);
+        
     }
 
 
@@ -104,8 +107,9 @@ public class EnemyMoveScript : MonoBehaviour
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
 
-        Debug.Log("move again");
+        //Debug.Log("move again");
         movingTo = true;
+        animator.SetBool("isAttacking", false);
 
         SetWaypoint();
 
