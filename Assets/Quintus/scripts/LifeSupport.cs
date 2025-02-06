@@ -2,36 +2,31 @@ using UnityEngine;
 
 public class LifeSupport : MonoBehaviour
 {
-    public LifeBar lifebar; 
-
-    public int lifecount = 3;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        lifebar.setupthehearts(lifecount);
+        
     }
 
-
+    // Update is called once per frame
     void Update()
     {
+        
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "bullet")
+        {
+            Debug.Log("damage taken");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "bullet")
         {
-            CheckLife();
             Debug.Log("damage taken");
-        }
-    }
-
-    private void CheckLife()
-    {
-        lifecount--;
-        if (lifecount == 0)
-        {
-            Debug.Log("im dead");
-
         }
     }
 }
