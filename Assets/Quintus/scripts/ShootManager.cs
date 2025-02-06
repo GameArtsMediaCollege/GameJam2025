@@ -12,6 +12,10 @@ public class ShootManager : MonoBehaviour
     private bool shootpressed;
     private bool isShooting;
 
+    public ParticleSystem particles;
+    public AudioSource audiosource;
+    public AudioClip[] shootsounds;
+
     void OnJump(InputAction.CallbackContext context)
     {
         Debug.Log("Trigger pressed");
@@ -19,7 +23,9 @@ public class ShootManager : MonoBehaviour
         isShooting = true;
         Debug.Log("pressed the space bar");
         GameObject bullet = Instantiate(bulletprefab, bulletspawnpoint.position, bulletspawnpoint.rotation);
+        particles.Play();
         bullet.GetComponent<BulletScript>().movSpeed = bulletspeed;
+        audiosource.PlayOneShot(shootsounds[0], 1f);
     }
 
     private void Awake()
