@@ -22,7 +22,7 @@ public class EnemyLifeSupport : MonoBehaviour
         if (other.transform.tag == "bullet")
         {
             Debug.Log("damage taken");
-            animator.SetBool("EnemyHit", true);
+            animator.SetBool("enemyHit", true);
             CheckLife();
         }
     }

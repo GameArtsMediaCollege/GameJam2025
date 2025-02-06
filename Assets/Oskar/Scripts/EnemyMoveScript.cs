@@ -26,9 +26,9 @@ public class EnemyMoveScript : MonoBehaviour
     {
         //Assign waypoint variable
         waypointObj = GameObject.Find("Waypoints");
-        player = GameObject.Find("Player");
+        //player = GameObject.Find("Player");
 
-        //player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
 
         SetWaypoint();
     }

@@ -66,8 +66,8 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   waypointObj: {fileID: 0}
   alertRange: 10
-  attackInterval: 10
-  attackRange: 10
+  attackInterval: 3
+  attackRange: 3
   animator: {fileID: 2711765039682800995}
 --- !u!54 &5040598270390814112
 Rigidbody:
