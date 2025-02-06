@@ -1,8 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyLifeSupport : MonoBehaviour
 {
     public int lifecount = 3;
+
+    [SerializeField] Animator animator;
     void Start()
     {
         
@@ -19,6 +22,8 @@ public class EnemyLifeSupport : MonoBehaviour
         if (other.transform.tag == "bullet")
         {
             Debug.Log("damage taken");
+            animator.SetBool("EnemyHit", true);
+
             CheckLife();
         }
     }
@@ -28,7 +33,17 @@ public class EnemyLifeSupport : MonoBehaviour
         lifecount--;
         if(lifecount == 0)
         {
-            Destroy(gameObject);
+            EnemyDeath();
         }
+    }
+    void EnemyDeath()
+    {
+        animator.SetBool("deadBool", true);
+        StartCoroutine(WaitDeathAnim());
+    }
+    IEnumerator WaitDeathAnim() 
+    {
+        yield return new WaitForSeconds(4);
+        Destroy(gameObject);
     }
 }

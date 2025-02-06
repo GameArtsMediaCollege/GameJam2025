@@ -18,12 +18,17 @@ public class EnemyMoveScript : MonoBehaviour
     bool followingPlayer = false;
     bool movingTo = true;
     bool isAttacking = false;
+    [SerializeField] Animator animator;
+
+    private float _directionY;
 
     private void Awake()
     {
         //Assign waypoint variable
         waypointObj = GameObject.Find("Waypoints");
         player = GameObject.Find("Player");
+
+        //player = GameObject.FindGameObjectWithTag("Player");
 
         SetWaypoint();
     }
@@ -37,12 +42,22 @@ public class EnemyMoveScript : MonoBehaviour
         if (movingTo)
         {
             transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, step);
+            FaceMovementDirection(); // Make the enemy face the movement direction
         }
         //Check if target is reached (only works for waypoints)
         CheckIfTargetIsReached();
         CheckDistanceToPlayer();
     }
+    void FaceMovementDirection()
+    {
+        Vector3 direction = (currentTarget.position - transform.position).normalized;
 
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+        }
+    }
     void CheckIfTargetIsReached()
     {
         if (transform.position == currentTarget.position)
@@ -57,12 +72,13 @@ public class EnemyMoveScript : MonoBehaviour
 
         if (distance <= alertRange && !followingPlayer)
         {
+            //Debug.Log("target player");
             followingPlayer = true;
             currentTarget = player.transform;
         }
         if (distance <= attackRange && !isAttacking)
         {
-            Debug.Log("in attack range");
+            //Debug.Log("in attack range");
             Attack();
         }
     }
@@ -72,13 +88,15 @@ public class EnemyMoveScript : MonoBehaviour
         //Pick random waypoint
         List<Transform> targets = waypointObj.GetComponent<WaypointScript>().waypoints;
         int listPos = Random.Range(0, targets.Count);
-        Debug.Log(listPos);
+        //Debug.Log(listPos);
 
         currentTarget = targets[listPos];
     }
     void Attack()
     {
+        animator.SetBool("isAttacking", true);
         StartCoroutine(WaitBeforeMoving());
+        
     }
 
 
@@ -89,8 +107,9 @@ public class EnemyMoveScript : MonoBehaviour
         yield return new WaitForSeconds(attackInterval);
         isAttacking = false;
 
-        Debug.Log("move again");
+        //Debug.Log("move again");
         movingTo = true;
+        animator.SetBool("isAttacking", false);
 
         SetWaypoint();
 

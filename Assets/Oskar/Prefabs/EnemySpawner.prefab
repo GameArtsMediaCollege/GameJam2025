@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabdff4d8e94db840b6ed432e9913173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefab: {fileID: 279199876583856722, guid: 3fcb3e1f5a74cc940be0e84fa0e097e6, type: 3}
-  spawnInterval: 5
+  EnemyPrefab: {fileID: 8804148854779290932, guid: 27047050ff183074aa008ce74dbabcdd, type: 3}
+  spawnInterval: 6
