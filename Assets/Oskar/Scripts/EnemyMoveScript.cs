@@ -18,6 +18,9 @@ public class EnemyMoveScript : MonoBehaviour
     bool followingPlayer = false;
     bool movingTo = true;
     bool isAttacking = false;
+    [SerializeField] Animator animator;
+
+    private float _directionY;
 
     private void Awake()
     {
@@ -37,12 +40,22 @@ public class EnemyMoveScript : MonoBehaviour
         if (movingTo)
         {
             transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, step);
+            FaceMovementDirection(); // Make the enemy face the movement direction
         }
         //Check if target is reached (only works for waypoints)
         CheckIfTargetIsReached();
         CheckDistanceToPlayer();
     }
+    void FaceMovementDirection()
+    {
+        Vector3 direction = (currentTarget.position - transform.position).normalized;
 
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+        }
+    }
     void CheckIfTargetIsReached()
     {
         if (transform.position == currentTarget.position)
@@ -57,6 +70,7 @@ public class EnemyMoveScript : MonoBehaviour
 
         if (distance <= alertRange && !followingPlayer)
         {
+            Debug.Log("target player");
             followingPlayer = true;
             currentTarget = player.transform;
         }
@@ -79,6 +93,7 @@ public class EnemyMoveScript : MonoBehaviour
     void Attack()
     {
         StartCoroutine(WaitBeforeMoving());
+        //animator.SetBool("isAttacking", true);
     }
 
 
